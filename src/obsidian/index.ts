@@ -49,7 +49,6 @@ export class Obsidian {
       body?: string;
     },
   ): Promise<T> {
-    // biome-ignore lint/suspicious/noConsole: <explanation>
     console.error(`[${method}] ${this.baseUrl}${path}`);
 
     const response = await fetch(`${this.baseUrl}${path}`, {
@@ -143,7 +142,10 @@ export class Obsidian {
   openFile({
     filename,
     newLeaf,
-  }: { filename: string; newLeaf?: boolean | null }) {
+  }: {
+    filename: string;
+    newLeaf?: boolean | null;
+  }) {
     const qs = newLeaf ? "?newLeaf=true" : "";
     return this.fetch<void>(`/open/${sanitizeAndEncodePath(filename)}${qs}`, {
       method: "POST",
@@ -222,7 +224,10 @@ export class Obsidian {
   simpleSearch({
     query,
     contextLength,
-  }: { query: string; contextLength?: number }) {
+  }: {
+    query: string;
+    contextLength?: number;
+  }) {
     const params = new URLSearchParams({
       query,
       contextLength: contextLength?.toString() || "100",
