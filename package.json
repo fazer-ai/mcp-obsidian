@@ -32,7 +32,7 @@
     "prepublishOnly": "bun run build"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.2.0",
+    "@biomejs/biome": "^2.2.3",
     "@types/bun": "latest"
   },
   "peerDependencies": {
