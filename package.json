@@ -26,7 +26,7 @@
   ],
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "build": "bun build src/index.ts --target node --outdir=dist",
+    "build": "echo '#!/usr/bin/env node' > dist/index.js && bun build src/index.ts --target node >> dist/index.js",
     "lint": "bun biome check",
     "format": "bun biome check --write",
     "prepublishOnly": "bun run build"
