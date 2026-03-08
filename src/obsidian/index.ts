@@ -70,7 +70,11 @@ export class Obsidian {
       );
     }
 
-    return (await response.json()) as T;
+    // Handle 204 No Content responses (empty body crashes JSON.parse)
+    if (status === 204) return null as T;
+    const text = await response.text();
+    if (!text) return null as T;
+    return JSON.parse(text) as T;
   }
 
   status() {
